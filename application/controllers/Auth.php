@@ -42,7 +42,40 @@ class Auth extends CI_Controller{
                 redirect('auth/register');
             }
         }
-    }    
-    
+    }
+    public function process_login(){
+        $username=$this->input->post('username');
+        $password=$this->input->post('password');
+        $user = $this->User_model->check_user($usename,$password);
+        if($user){
+            $this->session->set_userdata({
+                'user_id'=>$user->id,
+                'username'=>$user->username,
+                'role'=>$user->role,
+                'logged_in'=>TRUE
+            });
+
+            $this->redirect_by_role($user->role);
+        }else{
+            $this->session->set_flashdata('error', 'Username dan Password salah');
+            redirect('auth/login');
+        }
+    }
+    private function redirect_by_role($role){
+        switch($role){
+            case 'admin':
+                redirect('dashboard');
+                break;
+                case 'user':
+                    redirect('user/dashboard');
+                    break;
+                default:
+                redirect('aut/login');
+        }
+    }
+    public function logout(){
+        $this->session->sess_destroy();
+        redirect('auth/login');
+    } 
 }
 ?>
