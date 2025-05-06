@@ -46,14 +46,14 @@ class Auth extends CI_Controller{
     public function process_login(){
         $username=$this->input->post('username');
         $password=$this->input->post('password');
-        $user = $this->User_model->check_user($usename,$password);
+        $user = $this->User_model->check_user($username,$password);
         if($user){
-            $this->session->set_userdata({
+            $this->session->set_userdata([
                 'user_id'=>$user->id,
                 'username'=>$user->username,
                 'role'=>$user->role,
                 'logged_in'=>TRUE
-            });
+            ]);
 
             $this->redirect_by_role($user->role);
         }else{
@@ -67,14 +67,14 @@ class Auth extends CI_Controller{
                 redirect('dashboard');
                 break;
                 case 'user':
-                    redirect('user/dashboard');
+                    redirect('dashboard_user');
                     break;
                 default:
-                redirect('aut/login');
+                redirect('auth/login');
         }
     }
     public function logout(){
-        $this->session->sess_destroy();
+        $this->session->session_destroy();
         redirect('auth/login');
     } 
 }
