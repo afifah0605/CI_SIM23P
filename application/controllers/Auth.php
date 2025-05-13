@@ -67,7 +67,7 @@ class Auth extends CI_Controller{
                 redirect('dashboard');
                 break;
                 case 'user':
-                    redirect('dashboard_user');
+                    redirect('dashboard_user ');
                     break;
                 default:
                 redirect('auth/login');
