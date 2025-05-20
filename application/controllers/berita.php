@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class berita extends CI_Controller{
+class berita extends MY_Controller{
 
     public function __construct(){
         parent::__construct();
@@ -15,6 +15,8 @@ class berita extends CI_Controller{
         $this->load->view('templates/footer');
     }
     public function tambah(){
+        $this->load->model('Kategori_model');
+        $data['kategori_berita']=$this->Kategori_model->get_all();
         $data['berita']=$this->Berita_model->get_all_berita();
         $this->load->view('templates/header');
         $this->load->view('berita/form_berita', $data);

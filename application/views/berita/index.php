@@ -31,7 +31,7 @@
             <div class="card-body">
                 <a href="<?= base_url('berita/tambah'); ?>" class="btn btn-primary mb-3">Tambah Berita</a>
                 <?php if (!empty($berita)): ?>
-                <table class="table table-bordered table-striped">
+                <table id="datatable" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Judul</th>
