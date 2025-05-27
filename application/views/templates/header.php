@@ -227,6 +227,15 @@
                 </a>
               </li>
               <?php endif; ?>
+              
+              <?php if ($level =='admin'): ?>
+              <li class="nav-item">
+                <a href="<?= base_url('berita/laporan'); ?>" class="nav-link">
+                  <i class="far fa-folder nav-icon"></i>
+                  <p>Laporan</p>
+                </a>
+              </li>
+              <?php endif; ?>
             </ul>
       <li class="nav-item">
         <a href="<?= site_url('auth/logout') ?>" class="nav-link">
