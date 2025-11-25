@@ -52,6 +52,7 @@
                 <?php endforeach; ?>
                 </tbody>
             </table>
+            
             </div>
             
             <div class="card-footer">
